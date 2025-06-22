@@ -1,11 +1,11 @@
 {
-  "name": "chrome-extension-boilerplate-react",
-  "version": "5.0.4",
-  "description": "A chrome extension boilerplate built with React 18, Webpack 5, and Webpack Dev Server 4",
+  "name": "Driving Efficiency",
+  "version": "0.0.1",
+  "description": "Extension that optimizes my driving course experience by automating tasks and providing useful features.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lxieyang/chrome-extension-boilerplate-react.git"
+    "url": "https://github.com/NicMineDude/driving-eff.git"
   },
   "scripts": {
     "build": "node utils/build.js",

@@ -36,7 +36,8 @@ if (fileSystem.existsSync(secretsPath)) {
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 var options = {
-  mode: process.env.NODE_ENV || 'development',
+  // mode: process.env.NODE_ENV || 'development',
+  mode: 'production',
   entry: {
     newtab: path.join(__dirname, 'src', 'pages', 'Newtab', 'index.jsx'),
     options: path.join(__dirname, 'src', 'pages', 'Options', 'index.jsx'),
@@ -169,7 +170,7 @@ var options = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'src/assets/img/icon-128.png',
+          from: 'src/assets/img/icon-128-dEff.png',
           to: path.join(__dirname, 'build'),
           force: true,
         },
@@ -178,7 +179,7 @@ var options = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'src/assets/img/icon-34.png',
+          from: 'src/assets/img/icon-34-dEff.png',
           to: path.join(__dirname, 'build'),
           force: true,
         },
@@ -217,6 +218,9 @@ var options = {
   ].filter(Boolean),
   infrastructureLogging: {
     level: 'info',
+  },
+  devServer: {
+    https: true,
   },
 };
 
