@@ -36,8 +36,7 @@ if (fileSystem.existsSync(secretsPath)) {
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 var options = {
-  // mode: process.env.NODE_ENV || 'development',
-  mode: 'production',
+  mode: process.env.NODE_ENV || 'development',
   entry: {
     newtab: path.join(__dirname, 'src', 'pages', 'Newtab', 'index.jsx'),
     options: path.join(__dirname, 'src', 'pages', 'Options', 'index.jsx'),
@@ -218,9 +217,6 @@ var options = {
   ].filter(Boolean),
   infrastructureLogging: {
     level: 'info',
-  },
-  devServer: {
-    https: true,
   },
 };
 
