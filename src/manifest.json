@@ -21,8 +21,8 @@
   "devtools_page": "devtools.html",
   "web_accessible_resources": [
     {
-      "resources": ["content.styles.css", "icon-128-dEff.png", "icon-34-dEff.png"],
-      "matches": []
+      "resources": ["content.styles.css", "icon-128-dEff.png", "icon-34-dEff.png", "assets/success.mp3"],
+      "matches": ["<all_urls>"]
     }
   ],
   "permissions": [
