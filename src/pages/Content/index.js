@@ -5,51 +5,33 @@ console.log('Must reload extension for modifications to take effect.');
 
 printLine("Using the 'printLine' function from the Print Module");
 
-// function monitorNextButton() {
-//   const button = document.querySelector('#edit-submit');
-//   if (!button) {
-//     console.log('Next button not found');
-//     return;
-//   }
+function checkAndClick() {
+  console.log('Checking for button click...');
+  chrome.storage.local.get(['abled', 'siteText', 'htmlTag'], (result) => {
+    if (!result.abled) return;
+    console.log('Extension is enabled:', result.abled);
 
-//   console.log('Monitoring Next button...');
+    const urlMatch = window.location.href.startsWith(result.siteText);
+    if (!urlMatch) return;
+    console.log('URL matches:', result.siteText);
 
-//   const observer = new MutationObserver(() => {
-//     const value = button.value?.trim();
-//     const isEnabled = !button.disabled;
+    const button = document.getElementById(result.htmlTag);
+    console.log('Button found:', button);
 
-//     console.log(`Button value: ${value}, disabled: ${button.disabled}`);
+    if (button && !button.disabled) {
+      console.log('Clicking button:', button);
+      button.click();
+      //Play a sound if enabled here!
+    }
+  });
+}
 
-//     if (isEnabled && value === 'Next') {
-//       console.log('Conditions met — clicking button!');
-//       button.click();
-//       observer.disconnect();
-//     }
-//   });
+// Run every second (or adjust interval)
+setInterval(checkAndClick, 10000);
 
-//   observer.observe(button, {
-//     attributes: true,
-//     attributeFilter: ['value', 'disabled'],
-//   });
-
-//   const interval = setInterval(() => {
-//     const value = button.value?.trim();
-//     const isEnabled = !button.disabled;
-
-//     if (isEnabled && value === 'Next') {
-//       console.log('Conditions met (interval) — clicking button!');
-//       button.click();
-//       observer.disconnect();
-//       clearInterval(interval);
-//     }
-//   }, 500);
-// }
-
-// if (document.hasFocus()) {
-//   monitorNextButton();
-// }
-
-// window.addEventListener('focus', () => {
-//   console.log('Tab focused — starting monitor');
-//   monitorNextButton();
-// });
+// Optional: listen for storage changes (react live)
+chrome.storage.onChanged.addListener((changes, areaName) => {
+  if (areaName === 'local' && changes.abled) {
+    console.log('Enabled state changed:', changes.abled.newValue);
+  }
+});

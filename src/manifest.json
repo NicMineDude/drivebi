@@ -36,7 +36,6 @@
     "declarativeContent"
   ],
   "host_permissions": [
-    "https://my.yd.com/*",
     "<all_urls>"
   ]
 }

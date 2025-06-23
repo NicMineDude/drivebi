@@ -3,6 +3,8 @@ process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
 process.env.ASSET_PATH = '/';
 
+const fs = require('fs');
+
 var WebpackDevServer = require('webpack-dev-server'),
   webpack = require('webpack'),
   config = require('../webpack.config'),
@@ -13,7 +15,11 @@ var options = config.chromeExtensionBoilerplate || {};
 var excludeEntriesToHotReload = options.notHotReload || [];
 
 for (var entryName in config.entry) {
-  if (excludeEntriesToHotReload.indexOf(entryName) === -1) {
+  console.log(entryName);
+  if (
+    excludeEntriesToHotReload.indexOf(entryName) === -1 &&
+    entryName !== 'popup'
+  ) {
     config.entry[entryName] = [
       'webpack/hot/dev-server',
       `webpack-dev-server/client?hot=true&hostname=localhost&port=${env.PORT}`,
@@ -27,7 +33,12 @@ var compiler = webpack(config);
 
 var server = new WebpackDevServer(
   {
-    https: false,
+    https: {
+      key: fs.readFileSync(
+        path.join(__dirname, '../certs/localhost+2-key.pem')
+      ),
+      cert: fs.readFileSync(path.join(__dirname, '../certs/localhost+2.pem')),
+    },
     hot: true,
     liveReload: false,
     client: {
@@ -40,7 +51,7 @@ var server = new WebpackDevServer(
       directory: path.join(__dirname, '../build'),
     },
     devMiddleware: {
-      publicPath: `http://localhost:${env.PORT}/`,
+      publicPath: `https://localhost:${env.PORT}/`,
       writeToDisk: true,
     },
     headers: {
