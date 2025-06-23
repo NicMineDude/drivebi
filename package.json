@@ -1,5 +1,5 @@
 {
-  "name": "Driving Efficiency",
+  "name": "DriveBi",
   "version": "0.0.1",
   "description": "Extension that optimizes my driving course experience by automating tasks and providing useful features.",
   "license": "MIT",
@@ -53,7 +53,7 @@
     "ts-loader": "^9.4.2",
     "type-fest": "^3.5.2",
     "typescript": "^4.9.4",
-    "webpack": "^5.75.0",
+    "webpack": "^5.99.9",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1",
     "zip-webpack-plugin": "^4.0.1"

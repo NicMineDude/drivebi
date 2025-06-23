@@ -1,15 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "Driving Efficiency",
+  "name": "DriveBi",
   "description": "Extension that optimizes my driving course experience by automating tasks and providing useful features.",
   "options_page": "options.html",
   "background": { "service_worker": "background.bundle.js" },
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon-34-dEff.png"
-  },
-  "chrome_url_overrides": {
-    "newtab": "newtab.html"
   },
   "icons": {
     "128": "icon-128-dEff.png"
@@ -39,7 +36,6 @@
     "declarativeContent"
   ],
   "host_permissions": [
-    "https://my.yd.com/*",
     "<all_urls>"
   ]
 }

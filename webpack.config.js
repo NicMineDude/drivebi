@@ -6,8 +6,6 @@ var webpack = require('webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   TerserPlugin = require('terser-webpack-plugin');
 var { CleanWebpackPlugin } = require('clean-webpack-plugin');
-var ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-var ReactRefreshTypeScript = require('react-refresh-typescript');
 
 const ASSET_PATH = process.env.ASSET_PATH || '/';
 
@@ -36,8 +34,7 @@ if (fileSystem.existsSync(secretsPath)) {
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 var options = {
-  // mode: process.env.NODE_ENV || 'development',
-  mode: 'production',
+  mode: process.env.NODE_ENV || 'development',
   entry: {
     newtab: path.join(__dirname, 'src', 'pages', 'Newtab', 'index.jsx'),
     options: path.join(__dirname, 'src', 'pages', 'Options', 'index.jsx'),
@@ -98,11 +95,6 @@ var options = {
           {
             loader: require.resolve('ts-loader'),
             options: {
-              getCustomTransformers: () => ({
-                before: [isDevelopment && ReactRefreshTypeScript()].filter(
-                  Boolean
-                ),
-              }),
               transpileOnly: isDevelopment,
             },
           },
@@ -116,11 +108,7 @@ var options = {
           },
           {
             loader: require.resolve('babel-loader'),
-            options: {
-              plugins: [
-                isDevelopment && require.resolve('react-refresh/babel'),
-              ].filter(Boolean),
-            },
+            options: {},
           },
         ],
         exclude: /node_modules/,
@@ -134,7 +122,6 @@ var options = {
       .concat(['.js', '.jsx', '.ts', '.tsx', '.css']),
   },
   plugins: [
-    isDevelopment && new ReactRefreshWebpackPlugin(),
     new CleanWebpackPlugin({ verbose: false }),
     new webpack.ProgressPlugin(),
     // expose and write the allowed env vars on the compiled bundle
@@ -218,9 +205,6 @@ var options = {
   ].filter(Boolean),
   infrastructureLogging: {
     level: 'info',
-  },
-  devServer: {
-    https: true,
   },
 };
 
