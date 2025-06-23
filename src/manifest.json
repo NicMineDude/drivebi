@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "DriveBi",
-  "description": "Extension that optimizes my driving course experience by automating tasks and providing useful features.",
+  "description": "A simple Chrome extension that automatically clicks a user-defined button on a specified site. Perfect to DriveBi your online courses.",
   "options_page": "options.html",
   "background": { "service_worker": "background.bundle.js" },
   "action": {
