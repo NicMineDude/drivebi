@@ -29,11 +29,7 @@
     "storage",
     "activeTab",
     "scripting",
-    "tabs",
-    "windows",
-    "webNavigation",
-    "contextMenus",
-    "declarativeContent"
+    "tabs"
   ],
   "host_permissions": [
     "<all_urls>"
