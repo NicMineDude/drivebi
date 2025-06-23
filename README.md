@@ -37,7 +37,7 @@ This extension does **not** collect, transmit, or share any data. It operates on
 ---
 
 ## 🛠 Development
-This extension was created for educational purposes.  
+This extension was created for my own educational purposes.  
 Built using React + Webpack + Chrome Extension APIs.
 
 ---
