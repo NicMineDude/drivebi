@@ -22,6 +22,8 @@ A lightweight Chrome extension that automatically clicks a user-defined button o
 5️⃣ (Optional) Toggle **Sound** to play a sound on click.  
 6️⃣ Visit the site — the extension will detect and click the button when it becomes enabled.
 
+![Extension popup screenshot](src/assets/img/sc-demo-extension.png "Extension Popup Example")
+
 ---
 
 ## 🔒 Permissions
