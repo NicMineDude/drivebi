@@ -1,4 +1,4 @@
-# 🚀 Auto Button Clicker Chrome Extension
+# DriveBi Chrome Extension
 
 A lightweight Chrome extension that automatically clicks a user-defined button on a specified site. Built in under 12 hours for learning purposes.
 
